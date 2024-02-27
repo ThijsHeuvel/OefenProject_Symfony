@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-3">
+        <h1 class="mb-2">Create a new Post</h1>
+        <a class="btn btn-outline-dark confirmation" href="{{ path('homepage') }}"><strong>< back</strong></a>
+        <form method="POST" action="{{ path('post.submit') }}" class="mt-3">
+            <div class="mb-3">
+                <label for="title" class="form-label fs-3">Title</label>
+                <input type="text" class="form-control fs-2" id="title" name="title" style="width: 500px" placeholder="Title" required/>
+            </div>
+            <div class="mb3">
+                <label for="content" class="form-label fs-4">Content</label>
+                <textarea class="form-control fs-3 mb-2" id="content" name="content" style="height: 500px" placeholder="How do I..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success"><strong>+ Create Post!</strong></button>
+        </form>
+    </div>
+
+    <script>
+        var elems = document.getElementsByClassName('confirmation');
+        var confirmIt = function (e) {
+            if (!confirm('Your post will not be saved!')) e.preventDefault();
+        };
+        for (var i = 0, l = elems.length; i < l; i++) {
+            elems[i].addEventListener('click', confirmIt, false);
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <a class="btn btn-outline-dark" href="{{ path('homepage') }}"><strong>< back</strong></a>
+        <h1>{{ post.title }}</h1>
+        <h3 class="not-bold"><i>"{{ post.content }}"</i></h3>
+        <a class="btn btn-primary">+ Comment</a>
+    </div>
+{% endblock %}

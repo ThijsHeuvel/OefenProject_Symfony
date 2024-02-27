@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container" style="padding-top: 20px">
+    <h1>Welcome to the forum!</h1>
+    <br>
+    <div class="col">
+        <a class="btn btn-success ms-3 mb-3" href="{{ path('post.create') }}"><strong>+ New Post</strong></a>
+    </div>
+    {% for post in posts %}
+        <div class="d-flex flex-column align-content-center gap-3">
+            <div class="card">
+                <div class="card-header">
+                    From: CoolUsername
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title|shorten(100, '...')}}</h5>
+                    <p class="card-text">{{ post.content|shorten(170, '...') }}</p>
+                    <a href="{{ path('post.show', {id: post.id}) }}" class="btn btn-primary">View Post</a>
+                </div>
+            </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
